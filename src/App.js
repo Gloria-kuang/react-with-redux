@@ -8,10 +8,18 @@ function App() {
   const account = useSelector((state) => state.account);
   const dispatch = useDispatch();
 
-  const AC = bindActionCreators(actionCreators, dispatch);
+  const { depositMoney, withdrawMoney } = bindActionCreators(
+    actionCreators,
+    dispatch
+  ); //to bind all the action creators
 
-  console.log(AC);
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <h1>{account}</h1>
+      <button onClick={() => depositMoney(1000)}>Deposit</button>
+      <button onClick={() => withdrawMoney(1000)}>Withdraw</button>
+    </div>
+  );
 }
 
 export default App;
